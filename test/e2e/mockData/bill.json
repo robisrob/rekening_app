@@ -1,0 +1,119 @@
+{
+    "id": 1,
+    "items:": [
+        {
+            "description": "Witte wijn",
+            "price": 3.5,
+            "selectedAmount": 0,
+            "totalAmount": 2
+        },
+        {
+            "description": "Cava",
+            "price": 4.7,
+            "selectedAmount": 0,
+            "totalAmount": 3
+        },
+        {
+            "description": "Martini Wit",
+            "price": 3.8,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Cristal",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Nordic tonic",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Cola light",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 2
+        },
+        {
+            "description": "GarnaalKroketjes",
+            "price": 11,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Sla vijgen geit",
+            "price": 16.5,
+            "selectedAmount": 0,
+            "totalAmount": 3
+        },
+        {
+            "description": "Kip met pepersaus",
+            "price": 15.8,
+            "selectedAmount": 0,
+            "totalAmount": 3
+        },
+        {
+            "description": "Filet Mignon",
+            "price": 19.5,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Dame blanche",
+            "price": 6,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Coupe Bosvrucht",
+            "price": 7.5,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Kaastaart",
+            "price": 5,
+            "selectedAmount": 0,
+            "totalAmount": 3
+        },
+        {
+            "description": "Cola",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Fanta",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Espresso",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Ristretto",
+            "price": 2.2,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Cappuccino",
+            "price": 2.5,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        },
+        {
+            "description": "Verse muntthee",
+            "price": 2.7,
+            "selectedAmount": 0,
+            "totalAmount": 1
+        }
+    ]
+}

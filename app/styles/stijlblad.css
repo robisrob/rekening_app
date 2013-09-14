@@ -1,0 +1,15 @@
+.item-selected-true {text-decoration:line-through;
+    color: grey;
+    font-style:italic}
+
+#berekening{float: left; border: 3px;
+}
+
+.block{background-color: rgba(0, 0, 0, 0.08);
+}
+
+.belangrijk{font-weight:bold;}
+
+
+
+#rekeningImg{margin-left: 350px;}
