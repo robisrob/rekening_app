@@ -4,21 +4,22 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controller/controller.js"></script>
     <script src="scripts/services/services.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles/stijlblad.css">
+    <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
 </head>
 <body>
-<h1>Bill Mampoko</h1>
-<p>Click on an item to increase to quantity</p>
-<div ng-controller="BillOverviewCtrl" id="calculationDiv">
-    <ul class="block">
-        <li ng-repeat="billItem in billItems" ng-click="increaseQuantityUserSelectedItemByOne(billItem.id)" class="item-crossed-{{isItemCrossed(billItem.id)}} clickable">
+<div ng-controller="BillOverviewCtrl">
+<h1>Calculate the bill - Mampoko</h1>
+<h2>How much do i need to pay?</h2>
+<p>{{calculateTotalPriceUserSelectedItems()|currency:"&#8364;"}}</p>
+<h2>Bill</h2>
+<div id="calculationDiv">
+    <ul class="listItems">
+        <li ng-repeat="billItem in billItems" ng-click="increaseQuantityUserSelectedItemByOne(billItem.id)" class="crossed-{{isItemCrossed(billItem.id)}} clickable listItem">
             {{billItem.description}}:
             {{billItem.price|currency:"&#8364;"}} - <span class="important">{{findUserSelectedItemById(billItem.id).quantity}} van de {{billItem.totalQuantity}}</span>
         </li>
     </ul>
-    <h2>How much do i need to pay?</h2>
-
-    <p>{{calculateTotalPriceUserSelectedItems()|currency:"&#8364;"}}</p>
+</div>
 </div>
 <div id="imageBill">
     <img src="img/rek.jpg" alt="Rekening" height="999" width="331">
