@@ -1,29 +1,146 @@
 var services = angular.module('shareTheBillApp.services', []);
 
 services.factory('BillLoader',
-                function(){
-                    return [
-                        {omschrijving: "Witte wijn", prijs: 3.5, selected: false, totaalSelected: 0, totaalAantal: 2},
-                        {omschrijving: "Cava", prijs: 4.7, selected: false, totaalSelected: 0, totaalAantal: 3},
-                        {omschrijving: "Martini Wit", prijs: 3.8, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Cristal", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Nordic tonic", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Cola light", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 2},
-                        {omschrijving: "GarnaalKroketjes", prijs: 11, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Sla vijgen geit", prijs: 16.5, selected: false, totaalSelected: 0, totaalAantal: 3},
-                        {omschrijving: "Kip met pepersaus", prijs: 15.8, selected: false, totaalSelected: 0, totaalAantal: 3},
-                        {omschrijving: "Filet Mignon", prijs: 19.5, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Dame blanche", prijs: 6, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Coupe Bosvrucht", prijs: 7.5, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Kaastaart", prijs: 5, selected: false, totaalSelected: 0, totaalAantal: 3},
-                        {omschrijving: "Cola", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Fanta", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Espresso", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Ristretto", prijs: 2.2, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Cappuccino", prijs: 2.5, selected: false, totaalSelected: 0, totaalAantal: 1},
-                        {omschrijving: "Verse muntthee", prijs: 2.7, selected: false, totaalSelected: 0, totaalAantal: 1},
-                    ];
-});
+    function () {
+        return {
+            id: 1,
+            items: [
+                {
+                    "id": 1,
+                    "description": "Witte wijn",
+                    "price": 3.5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 2
+                },
+                {
+                    "id": 2,
+                    "description": "Cava",
+                    "price": 4.7,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 3
+                },
+                {
+                    "id": 3,
+                    "description": "Martini Wit",
+                    "price": 3.8,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 4,
+                    "description": "Cristal",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 5,
+                    "description": "Nordic tonic",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 6,
+                    "description": "Cola light",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 2
+                },
+                {
+                    "id": 7,
+                    "description": "GarnaalKroketjes",
+                    "price": 11,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 8,
+                    "description": "Sla vijgen geit",
+                    "price": 16.5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 3
+                },
+                {
+                    "id": 9,
+                    "description": "Kip met pepersaus",
+                    "price": 15.8,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 3
+                },
+                {
+                    "id": 10,
+                    "description": "Filet Mignon",
+                    "price": 19.5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 11,
+                    "description": "Dame blanche",
+                    "price": 6,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 12,
+                    "description": "Coupe Bosvrucht",
+                    "price": 7.5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 13,
+                    "description": "Kaastaart",
+                    "price": 5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 3
+                },
+                {
+                    "id": 14,
+                    "description": "Cola",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 15,
+                    "description": "Fanta",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 16,
+                    "description": "Espresso",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 17,
+                    "description": "Ristretto",
+                    "price": 2.2,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 18,
+                    "description": "Cappuccino",
+                    "price": 2.5,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                },
+                {
+                    "id": 19,
+                    "description": "Verse muntthee",
+                    "price": 2.7,
+                    "selectedQuantity": 0,
+                    "totalQuantity": 1
+                }
+            ]
+        };
+    });
 
 
 

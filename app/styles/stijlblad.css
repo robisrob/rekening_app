@@ -1,15 +1,26 @@
-.item-selected-true {text-decoration:line-through;
+.item-crossed-true {
+    text-decoration: line-through;
     color: grey;
-    font-style:italic}
-
-#berekening{float: left; border: 3px;
+    font-style: italic
 }
 
-.block{background-color: rgba(0, 0, 0, 0.08);
+#calculationDiv {
+    float: left;
+    border: 3px;
 }
 
-.belangrijk{font-weight:bold;}
+.block {
+    background-color: rgba(0, 0, 0, 0.08);
+}
 
+.important {
+    font-weight: bold;
+}
 
+.clickable{
+    cursor: pointer;
+}
 
-#rekeningImg{margin-left: 350px;}
+#imageBill {
+    margin-left: 350px;
+}

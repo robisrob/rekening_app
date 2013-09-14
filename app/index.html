@@ -1,4 +1,4 @@
-<html ng-app ="shareTheBillApp">
+<html ng-app="shareTheBillApp">
 <head>
     <script src="http://code.angularjs.org/1.0.7/angular.js"></script>
     <script src="scripts/app.js"></script>
@@ -7,27 +7,20 @@
     <link rel="stylesheet" type="text/css" href="styles/stijlblad.css">
 </head>
 <body>
-<h1>Rekening Mampoko</h1>
-
-<p>Klik op de zaken die je gegeten/gedronken hebt om het aantal te verhogen:</p>
-
-<div ng-controller="RekeningCtrl" id="berekening">
+<h1>Bill Mampoko</h1>
+<p>Click on an item to increase to quantity</p>
+<div ng-controller="BillOverviewCtrl" id="calculationDiv">
     <ul class="block">
-        <li class="item-selected-true">Water: &#8364;{{waterPerPersoon}} (&#8364;14/8 personen)</li>
-        <li ng-repeat="rekeningItem in rekeningItems" ng-click="addSelectedItem(rekeningItem)" ng-disabled="true"
-            class="item-selected-{{rekeningItem.selected}}">{{rekeningItem.omschrijving}}:
-            {{rekeningItem.prijs|currency:"&#8364;"}} - <span class="belangrijk">{{rekeningItem.totaalSelected}} van de {{rekeningItem.totaalAantal}}</span>
+        <li ng-repeat="billItem in billItems" ng-click="increaseQuantityUserSelectedItemByOne(billItem.id)" class="item-crossed-{{isItemCrossed(billItem.id)}} clickable">
+            {{billItem.description}}:
+            {{billItem.price|currency:"&#8364;"}} - <span class="important">{{findUserSelectedItemById(billItem.id).quantity}} van de {{billItem.totalQuantity}}</span>
         </li>
     </ul>
-    <h2>Hoeveel moet ik nu betalen?</h2>
+    <h2>How much do i need to pay?</h2>
 
-    <p>{{selectedTotaal|currency:"&#8364;"}}</p>
-
-    <h2>Totaal rekening</h2>
-
-    <p>{{berekenTotaal()|currency:"&#8364;"}}</p>
+    <p>{{calculateTotalPriceUserSelectedItems()|currency:"&#8364;"}}</p>
 </div>
-<div id="rekeningImg">
+<div id="imageBill">
     <img src="img/rek.jpg" alt="Rekening" height="999" width="331">
 </div>
 </body>

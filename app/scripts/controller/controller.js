@@ -1,14 +1,15 @@
-function RekeningCtrl($scope, BillLoader) {
+function BillOverviewCtrl($scope, BillLoader) {
 
     var initUserSelectedItems = function () {
         var userSelectedItems = [];
         for (var i = 0; i < BillLoader.items.length; i++) {
-            userSelectedItems.push({id: BillLoader.items[i].id, amount: 0})
+            userSelectedItems.push({id: BillLoader.items[i].id, quantity: 0})
         }
         return userSelectedItems;
     };
 
     $scope.userSelectedItems = initUserSelectedItems();
+    $scope.billItems = BillLoader.items;
 
     $scope.findUserSelectedItemById = function (id) {
         for (var i = 0; i < $scope.userSelectedItems.length; i++) {
@@ -28,67 +29,27 @@ function RekeningCtrl($scope, BillLoader) {
         throw {message: "Exception: Item not found"}
     };
 
-    $scope.increaseUserSelectedItemByOne = function (id) {
+    $scope.increaseQuantityUserSelectedItemByOne = function (id) {
         var userSelectedItem = $scope.findUserSelectedItemById(id);
-        if (userSelectedItem.amount + $scope.findItemFromBillLoaderById(id).selectedAmount < $scope.findItemFromBillLoaderById(id).totalAmount) {
-            userSelectedItem.amount++;
+        if (userSelectedItem.quantity + $scope.findItemFromBillLoaderById(id).selectedQuantity < $scope.findItemFromBillLoaderById(id).totalQuantity) {
+            userSelectedItem.quantity++;
         }else{
-            userSelectedItem.amount = 0;
+            userSelectedItem.quantity = 0;
         }
     };
+
+    $scope.calculateTotalPriceUserSelectedItems = function(){
+        var totalPriceUserSelectedItems = 0;
+        for (var i = 0; i < $scope.userSelectedItems.length; i++) {
+            totalPriceUserSelectedItems+= $scope.findItemFromBillLoaderById($scope.userSelectedItems[i].id).price * $scope.userSelectedItems[i].quantity;
+        }
+        return totalPriceUserSelectedItems;
+    }
+
+    $scope.isItemCrossed = function(id){
+        return $scope.findItemFromBillLoaderById(id).totalQuantity == $scope.findItemFromBillLoaderById(id).selectedQuantity + $scope.findUserSelectedItemById(id).quantity;
+    }
 }
 
-
-//    var water = 14;
-//    var totaalAantalPersonen = 8;
-//    $scope.selectedItems = [];
-//
-//    var berekenSelectedTotaal = function () {
-//        var totaal=0;
-//        for (var i = 0; i < $scope.selectedItems.length; i++) {
-//            totaal += $scope.selectedItems.prijs * $scope.selectedItems.totaalAantal;
-//        }
-//        return totaal;
-//    };
-//    var addItem = function (item) {
-//        item.totaalSelected++
-//        $scope.selectedItems.push(item);
-//    };
-//
-//    var resetItem = function (item) {
-//        item.totaalSelected = 0;
-//        $scope.selectedItems=[];
-//    };
-//
-//    $scope.rekeningItems = BillLoader;
-//
-//    $scope.waterPerPersoon = water / totaalAantalPersonen;
-//    $scope.selectedTotaal =  function () {
-//        var totaal=0;
-//        for (var i = 0; i < $scope.selectedItems.length; i++) {
-//            totaal += $scope.selectedItems.prijs * $scope.selectedItems.totaalAantal;
-//        }
-//        return totaal;
-//    };
-//
-//    $scope.addSelectedItem = function (item) {
-//        if (item.totaalSelected < item.totaalAantal) {
-//            addItem(item, $scope.selectedItems);
-//        } else {
-//            resetItem(item, $scope.selectedItems);
-//        }
-//    };
-//
-//
-//
-//
-//
-//    $scope.berekenTotaal = function () {
-//        var totaal = water;
-//        for (var i = 0; i < $scope.rekeningItems.length; i++) {
-//            totaal += $scope.rekeningItems[i].prijs * $scope.rekeningItems[i].totaalAantal;
-//        }
-//        return totaal;
-//    };
 
 

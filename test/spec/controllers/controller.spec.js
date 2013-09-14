@@ -7,22 +7,22 @@ describe('The controller is testing that', function () {
                 "id": 1,
                 "description": "White wine",
                 "price": 3.5,
-                "selectedAmount": 1,
-                "totalAmount": 3
+                "selectedQuantity": 1,
+                "totalQuantity": 3
             },
             {
                 "id": 2,
                 "description": "Cava",
                 "price": 4.7,
-                "selectedAmount": 2,
-                "totalAmount": 5
+                "selectedQuantity": 2,
+                "totalQuantity": 5
             },
             {
                 "id": 3,
                 "description": "Martini",
                 "price": 3.8,
-                "selectedAmount": 0,
-                "totalAmount": 4
+                "selectedQuantity": 0,
+                "totalQuantity": 4
             }
         ]};
 
@@ -30,7 +30,7 @@ describe('The controller is testing that', function () {
 
     beforeEach(inject(function ($rootScope, $controller) {
         $scope = $rootScope.$new();
-        ctrl = $controller('RekeningCtrl', {
+        ctrl = $controller('BillOverviewCtrl', {
             $scope: $scope,
             BillLoader: BillLoader
         })
@@ -41,26 +41,26 @@ describe('The controller is testing that', function () {
             $scope.userSelectedItems = [
                 {
                     id: 2,
-                    amount: 1
+                    quantity: 1
                 },
                 {
                     id: 3,
-                    amount: 2
+                    quantity: 2
                 }
             ]
             expect($scope.findUserSelectedItemById(2).id).toBe(2);
-            expect($scope.findUserSelectedItemById(2).amount).toBe(1);
+            expect($scope.findUserSelectedItemById(2).quantity).toBe(1);
         });
 
         it("find user selected item by id - doesn't find item", function () {
             $scope.userSelectedItems = [
                 {
                     id: 2,
-                    amount: 1
+                    quantity: 1
                 },
                 {
                     id: 3,
-                    amount: 2
+                    quantity: 2
                 }
             ]
 
@@ -86,35 +86,60 @@ describe('The controller is testing that', function () {
         });
     });
 
-    describe('increaseUserSelectedItemByOne', function () {
-        it('increases the amount of a userSelectedItem', function () {
-            $scope.increaseUserSelectedItemByOne(2);
+    describe('increaseQuantityUserSelectedItemByOne', function () {
+        it('increases the quantity of a userSelectedItem', function () {
+            $scope.increaseQuantityUserSelectedItemByOne(2);
             expect($scope.findUserSelectedItemById(2).id).toBe(2);
-            expect($scope.findUserSelectedItemById(2).amount).toBe(1);
+            expect($scope.findUserSelectedItemById(2).quantity).toBe(1);
 
-            $scope.increaseUserSelectedItemByOne(2);
+            $scope.increaseQuantityUserSelectedItemByOne(2);
             expect($scope.findUserSelectedItemById(2).id).toBe(2);
-            expect($scope.findUserSelectedItemById(2).amount).toBe(2);
+            expect($scope.findUserSelectedItemById(2).quantity).toBe(2);
         });
 
-        it('reset the userSelectedItem to zero if the amount of a UserSelectedItem goes over the correlated totalAmount minus the selectedAmount', function () {
-            $scope.increaseUserSelectedItemByOne(1);
+        it('reset the userSelectedItem to zero if the quantity of a UserSelectedItem goes over the correlated totalQuantity minus the selectedQuantity', function () {
+            $scope.increaseQuantityUserSelectedItemByOne(1);
             expect($scope.findUserSelectedItemById(1).id).toBe(1);
-            expect($scope.findUserSelectedItemById(1).amount).toBe(1);
+            expect($scope.findUserSelectedItemById(1).quantity).toBe(1);
 
-            $scope.increaseUserSelectedItemByOne(1);
+            $scope.increaseQuantityUserSelectedItemByOne(1);
             expect($scope.findUserSelectedItemById(1).id).toBe(1);
-            expect($scope.findUserSelectedItemById(1).amount).toBe(2);
+            expect($scope.findUserSelectedItemById(1).quantity).toBe(2);
 
-            $scope.increaseUserSelectedItemByOne(1);
+            $scope.increaseQuantityUserSelectedItemByOne(1);
             expect($scope.findUserSelectedItemById(1).id).toBe(1);
-            expect($scope.findUserSelectedItemById(1).amount).toBe(0);
+            expect($scope.findUserSelectedItemById(1).quantity).toBe(0);
         });
 
         it("throws exception when you try to increase a userSelectedItem that doesn't exist", function () {
             expect(function () {
-                $scope.increaseUserSelectedItemByOne(5)
+                $scope.increaseQuantityUserSelectedItemByOne(5)
             }).toThrow({message: "Exception: Item not found"});
+        });
+    });
+
+    describe('calculateTotalPriceUserSelectedItems', function () {
+        it('calculates the total price of the userSelectedItems ', function () {
+            $scope.increaseQuantityUserSelectedItemByOne(1);
+            $scope.increaseQuantityUserSelectedItemByOne(2);
+            $scope.increaseQuantityUserSelectedItemByOne(2);
+
+            expect($scope.calculateTotalPriceUserSelectedItems()).toBe(12.9);
+        });
+    });
+
+    describe('isItemCrossed ', function () {
+        it('returns true if the quantity of the userSelectedItem summed up with the selectedQuantity of the Item on the bill equals the totalQuantity on the bill ', function () {
+            expect($scope.isItemCrossed(1)).toBeFalsy();
+
+            $scope.increaseQuantityUserSelectedItemByOne(1);
+            expect($scope.isItemCrossed(1)).toBeFalsy();
+
+            $scope.increaseQuantityUserSelectedItemByOne(1);
+            expect($scope.isItemCrossed(1)).toBeTruthy();
+
+            $scope.increaseQuantityUserSelectedItemByOne(1);
+            expect($scope.isItemCrossed(1)).toBeFalsy();
         });
     });
 });
