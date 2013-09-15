@@ -8,13 +8,13 @@ function billOverviewCtrl($scope, BillLoader) {
         return userSelectedItems;
     };
 
-    $scope.userSelectedItems = initUserSelectedItems();
+    var userSelectedItems = initUserSelectedItems();
     $scope.billItems = BillLoader.items;
 
     $scope.findUserSelectedItemById = function (id) {
-        for (var i = 0; i < $scope.userSelectedItems.length; i++) {
-            if ($scope.userSelectedItems[i].id == id) {
-                return $scope.userSelectedItems[i]
+        for (var i = 0; i < userSelectedItems.length; i++) {
+            if (userSelectedItems[i].id == id) {
+                return userSelectedItems[i]
             }
         }
         throw {message: "Exception: Item not found"}
@@ -40,8 +40,8 @@ function billOverviewCtrl($scope, BillLoader) {
 
     $scope.calculateTotalPriceUserSelectedItems = function(){
         var totalPriceUserSelectedItems = 0;
-        for (var i = 0; i < $scope.userSelectedItems.length; i++) {
-            totalPriceUserSelectedItems+= $scope.findItemFromBillLoaderById($scope.userSelectedItems[i].id).price * $scope.userSelectedItems[i].quantity;
+        for (var i = 0; i < userSelectedItems.length; i++) {
+            totalPriceUserSelectedItems+= $scope.findItemFromBillLoaderById(userSelectedItems[i].id).price * userSelectedItems[i].quantity;
         }
         return totalPriceUserSelectedItems;
     }
@@ -51,7 +51,16 @@ function billOverviewCtrl($scope, BillLoader) {
     }
 }
 
-
 function addBillCtrl($scope, BillLoader) {
+
+    $scope.billItems = [];
+
+    $scope.addBillItem = function(){
+        $scope.billItems.push({
+            description: $scope.description,
+            price: $scope.price,
+            quantity: $scope.quantity
+        });
+    }
 }
 

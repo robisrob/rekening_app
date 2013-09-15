@@ -1,1 +1,16 @@
-Hello world
+<form ng-submit="addBillItem()">
+<label for="description">Description</label>
+<input type="text" name="description" id="description" value="" ng-model="description"/>
+<label for="description">price</label>
+<input type="text" name="price" id="price" value="" ng-model="price"/>
+<label for="quantity">quantity</label>
+<input type="text" name="quantity" id="quantity" value="" ng-model="quantity"/>
+<input type="submit" id="addItem" value="add Item" />
+</form>
+
+<ul class="listItems">
+    <li ng-repeat="billItem in billItems" class="listItem">
+        {{billItem.description}}:
+        {{billItem.price|currency:"&#8364;"}} - {{billItem.quantity}}</span>
+    </li>
+</ul>
