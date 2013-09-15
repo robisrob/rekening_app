@@ -7,22 +7,6 @@
     <link rel="stylesheet" type="text/css" href="styles/stylesheet.css">
 </head>
 <body>
-<div ng-controller="BillOverviewCtrl">
-<h1>Calculate the bill - Mampoko</h1>
-<h2>How much do i need to pay?</h2>
-<p>{{calculateTotalPriceUserSelectedItems()|currency:"&#8364;"}}</p>
-<h2>Bill</h2>
-<div id="calculationDiv">
-    <ul class="listItems">
-        <li ng-repeat="billItem in billItems" ng-click="increaseQuantityUserSelectedItemByOne(billItem.id)" class="crossed-{{isItemCrossed(billItem.id)}} clickable listItem">
-            {{billItem.description}}:
-            {{billItem.price|currency:"&#8364;"}} - <span class="important">{{findUserSelectedItemById(billItem.id).quantity}} van de {{billItem.totalQuantity}}</span>
-        </li>
-    </ul>
-</div>
-</div>
-<div id="imageBill">
-    <img src="img/rek.jpg" alt="Rekening" height="999" width="331">
-</div>
+<div ng-view></div>
 </body>
 </html>

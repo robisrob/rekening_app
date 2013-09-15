@@ -30,7 +30,7 @@ describe('The controller is testing that', function () {
 
     beforeEach(inject(function ($rootScope, $controller) {
         $scope = $rootScope.$new();
-        ctrl = $controller('BillOverviewCtrl', {
+        ctrl = $controller('billOverviewCtrl', {
             $scope: $scope,
             BillLoader: BillLoader
         })

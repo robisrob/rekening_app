@@ -1,4 +1,4 @@
-function BillOverviewCtrl($scope, BillLoader) {
+function billOverviewCtrl($scope, BillLoader) {
 
     var initUserSelectedItems = function () {
         var userSelectedItems = [];
@@ -52,4 +52,6 @@ function BillOverviewCtrl($scope, BillLoader) {
 }
 
 
+function addBillCtrl($scope, BillLoader) {
+}
 
